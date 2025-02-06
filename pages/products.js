@@ -46,7 +46,7 @@ export default function Products() {
     .filter(product => 
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    .sort((a, b) => {
+    .sort((a, b) => { 
       if (sortOrder === 'asc') {
         return a.price - b.price;
       } else {

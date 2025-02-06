@@ -24,7 +24,7 @@ export default function Admin() {
       console.log('Gönderilen Veriler:', {
         name,
         price: parseFloat(price),
-        description,
+        description,   
         features,
         imageExists: !!image
       });
