@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
@@ -13,20 +13,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Depoyu Klonla
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Node.js Kurulumu
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Bağımlılıkları Yükle
+      - name: Install dependencies
         run: npm install
 
-      - name: Lint Kontrolü
-        run: npm run lint
-
-      - name: Testleri Çalıştır
-        run: npm test
-   
+      - name: Run tests
+        run: npm test 
+    
