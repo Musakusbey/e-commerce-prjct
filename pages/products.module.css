@@ -1,0 +1,181 @@
+/* === Hareketli Arkaplan === */
+@keyframes animatedBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #ece9e6, #ffffff);
+  background-size: 400% 400%;
+  animation: animatedBackground 10s ease infinite;
+}
+
+/* === Arama ve Filtreleme Alanı === */
+.filters {
+  display: flex;
+  gap: 1rem;
+  max-width: 900px;
+  width: 100%;
+  margin: 4rem auto 2rem auto;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.searchInput, .sortSelect {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.98);
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.searchInput:hover, .sortSelect:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.searchInput:focus, .sortSelect:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+.sortSelect {
+  cursor: pointer;
+  appearance: none;
+  background: #3b82f6;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+}  
+
+.sortSelect:hover {
+  background: #2563eb;
+}
+
+/* === Ürün Listesi === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* === Ürün Kartı Genel Stil === */
+.card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: 340px;
+  border: 1px solid #eee;
+  height: 100%; /* Kartların eşit yükseklikte olması için */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.productImage {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 2px solid #ddd;
+}
+
+.cardContent {
+  padding: 20px;
+  flex-grow: 1; /* İçeriğin aşağı doğru genişlemesi için */
+  display: flex;
+  flex-direction: column;
+}
+
+.cardContent h3 {
+  font-size: 1.4rem;
+  color: #222;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #007bff;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.description {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  flex-grow: 1; /* Butonu aşağıya itmek için */
+}
+
+.features {
+  margin-top: 10px;
+}
+
+.features h4 {
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.features ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features li {
+  font-size: 0.9rem;
+  color: #555;
+  padding: 3px 0;
+  display: flex;
+  align-items: center;
+}
+
+.features li::before {
+  content: '\2713';
+  color: #28a745;
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.addToCartButton {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 0 0 16px 16px;
+  transition: background-color 0.3s ease;
+  margin-top: auto; /* Butonu kartın en altına sabitle */
+}
+
+.addToCartButton:hover {
+  background-color: #0056b3;
+}
+   

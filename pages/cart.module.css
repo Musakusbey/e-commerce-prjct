@@ -1,0 +1,170 @@
+/* === Hareketli Arka Plan === */
+@keyframes animatedBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  max-width: 1000px;
+  margin: 100px auto 0;
+  padding: 2rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  animation: animatedBackground 10s ease infinite;
+  background-size: 400% 400%;
+}
+
+/* === Başlık Stili === */
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+/* === Boş Sepet İçin === */
+.empty {
+  text-align: center;
+  color: #718096;
+  font-size: 1.4rem;
+  padding: 2rem;
+}
+
+/* === Sepet Öğeleri === */
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.cartItem:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* === Ürün Bilgisi === */
+.itemInfo h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #2d3748;
+}
+
+.itemInfo p {
+  margin: 0.5rem 0 0;
+  color: #4a5568;
+  font-size: 1.1rem;
+}
+
+/* === Miktar Ayarları === */
+.itemActions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.quantityButton {
+  background: #e2e8f0;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.quantityButton:hover {
+  background: #cbd5e0;
+}
+
+/* === Silme Butonu === */
+.removeButton {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.removeButton:hover {
+  background: #e53e3e;
+}
+
+/* === Özet (Toplam Fiyat) === */
+.summary {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+/* === Sepeti Onayla Butonu === */
+.checkoutButton {
+  width: 100%;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkoutButton:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+}
+
+/* === Responsive Tasarım === */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .cartItem {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .itemActions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .checkoutButton {
+    font-size: 1.1rem;
+  }
+}
+   
