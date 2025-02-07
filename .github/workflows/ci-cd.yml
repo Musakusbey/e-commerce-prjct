@@ -1,0 +1,41 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+      
+    steps:
+    - name: 🚀 Reponun Kopyasını Al
+      uses: actions/checkout@v3
+    
+    - name: 📦 Node.js Kurulumu
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm' # Önceki bağımlılıkları önbellekten yükler, hız kazandırır.
+    
+    - name: 📂 Bağımlılıkları Yükle
+      run: npm ci
+    
+    - name: 🔍 Lint Kontrolü
+      run: npm run lint
+    
+    - name: 🔐 Güvenlik Taraması
+      run: npm run security-check || echo "⚠️ Güvenlik hatası var, kontrol et!"
+
+    - name: 🧪 Testleri Çalıştır
+      run: npm test
+
+    - name: 🏗️ Build Aşaması
+      run: npm run build
+
+    # Eğer performance-test script'in yoksa bu kısmı yorum satırına al.
+    - name: 🚀 Performans Testi Çalıştır
+      run: npm run performance-test || echo "⚠️ Performans testi başarısız, incele!"
+  

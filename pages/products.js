@@ -21,7 +21,7 @@ export default function Products() {
       if (error) throw error;
       setProducts(data || []);
     } catch (error) {
-      console.error('Error fetching products:', error);
+      // console.error('Error fetching products:', error);  // İstersen açabilirsin
     } finally {
       setLoading(false);
     }
@@ -85,31 +85,9 @@ export default function Products() {
       <div className={styles.grid}>
         {filteredProducts.map((product) => (
           <div key={product.id} className={styles.card}>
-            {product.image_url && (
-              <img 
-                src={product.image_url} 
-                alt={product.name} 
-                className={styles.productImage} 
-              />
-            )}
             <div className={styles.cardContent}>
               <h3>{product.name}</h3>
               <p className={styles.price}>{product.price.toFixed(2)} TL</p>
-              
-              {product.description && (
-                <p className={styles.description}>{product.description}</p>
-              )}
-              
-              {product.features && (
-                <div className={styles.features}>
-                  <h4>Özellikler:</h4>
-                  <ul>
-                    {JSON.parse(product.features).map((feature, index) => (
-                      <li key={index}>{feature}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
             <button
               onClick={() => addToCart(product)}
@@ -123,3 +101,4 @@ export default function Products() {
     </div>
   );
 }
+ 

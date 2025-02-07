@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import Header from '../components/Header';
+import PropTypes from 'prop-types'; // ✅ ESLint için prop validation eklendi
+import Header from "../components/Header";
 import { motion, AnimatePresence } from 'framer-motion';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
@@ -46,22 +47,18 @@ function MyApp({ Component, pageProps }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Sepetteki ürün sayısını localStorage'dan al
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const count = cart.reduce((total, item) => total + item.quantity, 0);
     setCartItemCount(count);
 
-    // localStorage'daki değişiklikleri dinle
     const handleStorageChange = () => {
       const updatedCart = JSON.parse(localStorage.getItem('cart') || '[]');
       const updatedCount = updatedCart.reduce((total, item) => total + item.quantity, 0);
       setCartItemCount(updatedCount);
     };
 
-    // Event listener'ı ekle
     window.addEventListener('storage', handleStorageChange);
 
-    // Component unmount olduğunda event listener'ı kaldır
     return () => {
       window.removeEventListener('storage', handleStorageChange);
     };
@@ -86,4 +83,18 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
+// ✅ ESLint hatalarını gidermek için prop-types doğrulaması eklendi
+MyApp.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.object.isRequired,
+};
+
+ErrorFallback.propTypes = {
+  error: PropTypes.shape({
+    message: PropTypes.string.isRequired
+  }).isRequired,
+  resetErrorBoundary: PropTypes.func.isRequired
+};
+
 export default MyApp;
+  

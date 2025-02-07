@@ -1,16 +1,16 @@
-const React = require('react');
-const { render, screen } = require('@testing-library/react');
-const Home = require('../pages/index').default;
+import { render, screen } from '@testing-library/react';
+import Home from '../pages/index';
 
-describe('Home Page', () => {
-  it('renders homepage', () => {
+describe('Ana Sayfa', () => {
+  test('Ana sayfa doğru yüklenir', () => {
     render(<Home />);
     
-    // queryAllBy kullanarak birden fazla eşleşmeyi ele alalım
-    const welcomeTexts = screen.queryAllByText(/Hoş Geldiniz/i);
-    expect(welcomeTexts.length).toBeGreaterThan(0);
+    // getByText yerine daha kesin seçim yapalım
+    const titleElement = screen.getByRole('heading', { name: /Hoş Geldiniz/i });
+    const productsButton = screen.getByRole('link', { name: /Ürünleri Görüntüle/i });
 
-    const viewProductsButton = screen.getByText(/Ürünleri Görüntüle/i);
-    expect(viewProductsButton).toBeInTheDocument();
+    expect(titleElement).toBeInTheDocument();
+    expect(productsButton).toBeInTheDocument();
   });
-});  
+});
+  
