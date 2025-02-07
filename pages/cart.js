@@ -12,9 +12,9 @@ const Cart = () => {
     
     // Toplam fiyatı hesapla
     const totalPrice = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    setTotal(totalPrice);
+    setTotal(totalPrice); 
   }, []);
-
+   
   const updateQuantity = (productId, newQuantity) => {
     if (newQuantity < 1) return;
 
@@ -95,3 +95,4 @@ const Cart = () => {
 };
 
 export default Cart;
+  
