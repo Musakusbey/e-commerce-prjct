@@ -39,15 +39,6 @@
     "jest-environment-jsdom": "^29.7.0",
     "lighthouse": "^11.0.0"
   },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "setupFilesAfterEnv": [
-      "<rootDir>/jest.setup.js"
-    ],
-    "moduleNameMapper": {
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
-    }
-  },
   "eslintConfig": {
     "extends": [
       "next/core-web-vitals",
@@ -61,3 +52,4 @@
     }
   }
 }
+  
