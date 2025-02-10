@@ -47,7 +47,6 @@
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Input ve Select Hover & Focus */
 .searchInput:hover, .sortSelect:hover {
   border-color: rgba(59, 130, 246, 0.5);
 }
@@ -55,30 +54,6 @@
 .searchInput:focus, .sortSelect:focus {
   border-color: #3b82f6;
   box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
-}
-
-/* Select Özelleştirme */
-.sortSelect {
-  cursor: pointer;
-  appearance: none;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: white;
-  font-weight: 600;
-  padding: 1rem;
-  text-align: center;
-  border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  transition: all 0.3s ease;
-}  
-.sortSelect option {
-  background: white; /* Açılır menünün arkaplanı */
-  color: black; /* Yazı rengini siyah yap */
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 1rem;
-} 
-.sortSelect:hover {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
 }
 
 /* === Ürün Listesi === */
@@ -104,11 +79,18 @@
   border: 1px solid rgba(255, 255, 255, 0.6);
   position: relative;
   overflow: hidden;
+  min-height: 500px; /* Tüm kartların aynı boyutta olması için */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+/* === Ürün Resimleri === */
+.productImage {
+  max-width: 100%;
+  height: 200px; /* Resimlerin aynı boyutta olması için */
+  object-fit: contain; /* Taşmayı önler */
+  border-radius: 10px;
 }
 
 /* === Ürün Başlığı === */
@@ -119,13 +101,30 @@
   text-align: center;
 }
 
-/* === Ürün Fiyatı === */
+/* === Ürün Açıklaması ve Fiyat === */
 .price {
   font-size: 1.8rem;
   font-weight: 800;
   background: linear-gradient(135deg, #ff416c, #ff4b2b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* === Özellik Listesi === */
+.cardContent ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.cardContent ul li {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* === Sepete Ekle Butonu === */
@@ -143,6 +142,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   box-shadow: 0 5px 15px rgba(255, 105, 135, 0.3);
+  margin-top: auto; /* Buton en alta sabitlenecek */
 }
 
 .addToCartButton:hover {
@@ -170,6 +170,11 @@
 
   .card {
     padding: 1.5rem;
+    min-height: 450px; /* Mobilde de aynı boyutta olacak */
+  }
+
+  .productImage {
+    height: 180px; /* Küçük ekranlar için optimize edildi */
   }
 
   .cardContent h3 {
@@ -190,4 +195,4 @@
     font-size: 0.95rem;
   }
 } 
-      
+    
