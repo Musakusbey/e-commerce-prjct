@@ -7,7 +7,4 @@ if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error("Supabase URL veya Anonim Anahtar Eksik! .env.local dosyanı kontrol et.");
 }
 
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
-
-export default supabase;
-  
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);  
